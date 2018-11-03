@@ -25,14 +25,15 @@ class Editor extends React.Component {
     }
     onChange(newValue, e) {
         console.log('onChange', newValue, e);
-        let new_data = {...this.state.data};
+        let new_data = {...this.props.data};
         new_data[parseInt(this.props.ids)].code = newValue;
-        this.setState({ data: new_data });
+        this.props.onUpdate(new_data);
         //console.log(this.state.data);
     }
     render() {
-        // console.log(this.props);
-        const code = this.state.data[parseInt(this.props.ids)].code;
+        // console.log("inside rende");
+        // console.log(this.props.data[parseInt(this.props.ids)]);
+        const code = this.props.data[parseInt(this.props.ids)].code;
         const options = {
             selectOnLineNumbers: true
         };
