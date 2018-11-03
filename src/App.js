@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from 'react-dom';
 import MonacoEditor from 'react-monaco-editor';
 
 class App extends React.Component {
