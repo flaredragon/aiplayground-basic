@@ -2,6 +2,7 @@ import React from 'react';
 //import { render } from "react-dom";
 import Tabs from "./components/TabsComponent/Tabs";
 import Editor from "./components/EditorComponent/Editor";
+import Wrapper from './components/ConversationalComponent/Wrapper';
 // import { string } from 'prop-types';
 //import glamorous from "glamorous";
 
@@ -77,6 +78,7 @@ class App extends React.Component {
         </Tabs>
 
         <button onClick={this.addTab} >Add Tabs</button>
+        <Wrapper></Wrapper>
       </div>
     )
   }
