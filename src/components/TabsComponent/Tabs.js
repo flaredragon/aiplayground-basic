@@ -64,7 +64,7 @@ const TabsContainer = glamorous.div({
 });
 
 const ReactTabs = glamorous.div({
-    position: "realative"
+    position: "relative"
 });
 
 class Tabs extends Component {

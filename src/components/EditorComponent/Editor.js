@@ -28,6 +28,7 @@ class Editor extends React.Component {
         let new_data = {...this.props.data};
         new_data[parseInt(this.props.ids)].code = newValue;
         this.props.onUpdate(new_data);
+        // console.log(eval(newValue,'dd'));
         //console.log(this.state.data);
     }
     render() {
