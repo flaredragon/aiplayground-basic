@@ -1,38 +1,39 @@
 import React from 'react';
-import MonacoEditor from 'react-monaco-editor';
+//import { render } from "react-dom";
+import Tabs from "./components/TabsComponent/Tabs";
+import Editor from "./components/EditorComponent/Editor";
+//import glamorous from "glamorous";
+
+const styles = {
+  fontFamily: "sans-serif",
+  // textAlign: "center"
+};
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      code: '// type your code...',
-    }
-  }
-  editorDidMount(editor, monaco) {
-    console.log('editorDidMount', editor);
-    editor.focus();
-  }
-  onChange(newValue, e) {
-    console.log('onChange', newValue, e);
-  }
+
+  
   render() {
-    const code = this.state.code;
-    const options = {
-      selectOnLineNumbers: true
-    };
     return (
-      <MonacoEditor
-        width="800"
-        height="600"
-        language="javascript"
-        theme="vs-dark"
-        value={code}
-        options={options}
-        onChange={this.onChange.bind(this)}
-        editorDidMount={this.editorDidMount.bind(this)}
-      />
-    );
+      <div style={styles}>
+        <Tabs
+          activeTab={{
+            id: "0"
+          }}
+        >
+        <Tabs.Tab id="0" title="Tab 1">
+          <Editor ids="0" />
+        </Tabs.Tab>
+        <Tabs.Tab id="1" title="Tab 2">
+          <Editor ids="1" />
+        </Tabs.Tab>
+        </Tabs>
+      </div>
+    )
   }
+
 }
+
+
+//render(<App />, document.getElementById("root"));
 
 export default App;
