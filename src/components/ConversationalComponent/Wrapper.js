@@ -1,4 +1,5 @@
 import React from "react";
+import safeEval from 'safe-eval';
 import MessageList from './MessageList';
 import SendMessageForm from './SendMessageForm';
 const DUMMY_DATA = [
@@ -23,8 +24,8 @@ class Wrapper extends React.Component{
       }
       sendMessage(message){
         var data = this.state.messages;
-        var x = eval('console.log("hi")');
-        data.push({senderId:"user",text:x});
+        var x = safeEval('(function square(b) { return b * b; })('+message+')');
+        data.push({senderId:"user",text:message});
         console.log(x);
         this.setState({messages:data});
         

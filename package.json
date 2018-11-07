@@ -10,7 +10,10 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-monaco-editor": "^0.20.0",
+    "react-redux": "^5.1.0",
     "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
+    "safe-eval": "^0.4.1",
     "yarn": "^1.12.1"
   },
   "scripts": {
