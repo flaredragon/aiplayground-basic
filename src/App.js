@@ -32,17 +32,18 @@ class App extends React.Component {
 
   updateCodeHandler = (new_data) => {
     this.setState({ data: new_data });
+    //console.log([...this.state.data]);
   }
 
   addTab = () => {
     let new_tab_count = this.state.tab_count;
     
-    let new_data = [...this.state.data];
-    console.log(new_data);
-    new_data.push({
+    let new_data =  this.state.data;
+    new_data[new_tab_count]={
       id: new_tab_count,
       code: '//type your code.....'
-    });
+    };
+    console.log(new_data);
 
     new_tab_count += 1;
     
