@@ -2,6 +2,8 @@ import React from "react";
 import safeEval from 'safe-eval';
 import MessageList from './MessageList';
 import SendMessageForm from './SendMessageForm';
+import store from '../../store/configurestore';
+import { addTab } from "../../actions/bookActions";
 const DUMMY_DATA = [
     {
       senderId: "perborgen",
@@ -21,14 +23,16 @@ class Wrapper extends React.Component{
         this.state = {
            messages: DUMMY_DATA
         }
+        
       }
       sendMessage(message){
+        const index = store.getState();
         var data = this.state.messages;
-        var x = safeEval('(function square(b) { return b * b; })('+message+')');
+        var x = safeEval('('+index.addTab.data[index.messageReducer.tabActive].code+')('+message+')');
         data.push({senderId:"user",text:message});
         console.log(x);
         this.setState({messages:data});
-        
+        //console.log(store.getState())
       }
     render()
     {

@@ -21,7 +21,7 @@ class Editor extends React.Component {
     }
     editorDidMount(editor, monaco) {
         console.log('editorDidMount', editor);
-        // editor.focus();
+        //editor.focus();
     }
     onChange(newValue, e) {
         console.log('onChange', newValue, e);

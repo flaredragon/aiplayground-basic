@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import glamorous from "glamorous";
-
+import {connect} from 'react-redux';
+import {updateTab} from '../../actions/messageActions';
 import Tab from "./Tab";
 
 const ListTabs = glamorous.ul({
@@ -69,7 +70,7 @@ const ReactTabs = glamorous.div({
 
 class Tabs extends Component {
     static Tab = Tab;
-
+    
     state = {
         tabs: [],
         prevActiveTab: {},
@@ -113,6 +114,7 @@ class Tabs extends Component {
                 activeTab: tab
             };
         });
+        this.props.updateTab(this.state.activeTab.id);
     };
 
     render() {
@@ -160,4 +162,18 @@ class Tabs extends Component {
     }
 }
 
-export default Tabs;
+const mapStateToProps = (state, ownProps) => {
+    return {
+      // You can now say this.props.books
+      tab:state.messageReducer.activeTab
+    }
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+    // You can now say this.props.createBook
+      updateTab: tab => dispatch(updateTab(tab))
+    }
+  };
+  
+export default  connect(mapStateToProps, mapDispatchToProps)(Tabs);

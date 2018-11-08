@@ -25,7 +25,15 @@ export default (state = initialState, action) => {
                   data:[...state.data,new_data],
                   tab_count:tabs
             };
+      case 'UPDATE_CODE':
+            const updated_data = [...action.data];
+            console.log(updated_data)
+            return {
+                  ...state,
+                  data:updated_data
+            };
       default:
             return state;
     }
   };
+

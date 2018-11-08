@@ -2,7 +2,7 @@ import React from 'react';
 //import { render } from "react-dom";
 import { connect } from 'react-redux';
 import {
-  addTab
+  addTab,updateCode
 } from './actions/bookActions';
 import Tabs from "./components/TabsComponent/Tabs";
 import Editor from "./components/EditorComponent/Editor";
@@ -24,6 +24,8 @@ class App extends React.Component {
   }
 
   updateCodeHandler = (new_data) => {
+    //this.props.updateCode(new_data);
+    //console.log(new_data);
     this.setState({ data: new_data });
     //console.log([...this.state.data]);
   }
@@ -78,7 +80,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
   // You can now say this.props.createBook
-    addTab: tabs => dispatch(addTab(tabs))
+    addTab: tabs => dispatch(addTab(tabs)),
+    updateCode: data => dispatch(updateCode(data))
   }
 };
 
