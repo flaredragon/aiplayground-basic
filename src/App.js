@@ -1,8 +1,13 @@
 import React from 'react';
 //import { render } from "react-dom";
+import { connect } from 'react-redux';
+import {
+  addTab
+} from './actions/bookActions';
 import Tabs from "./components/TabsComponent/Tabs";
 import Editor from "./components/EditorComponent/Editor";
 import Wrapper from './components/ConversationalComponent/Wrapper';
+//import * as bookActions from '../../actions/bookActions';
 // import { string } from 'prop-types';
 //import glamorous from "glamorous";
 
@@ -15,19 +20,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      data: [
-        {
-          id: 0,
-          code: '//type your code...'
-        },
-        {
-          id: 1,
-          code: '//type your code.....'
-        },
-      ],
-      tab_count: 2
-    }
+    //console.log(this.props.rdata);
   }
 
   updateCodeHandler = (new_data) => {
@@ -36,28 +29,17 @@ class App extends React.Component {
   }
 
   addTab = () => {
-    let new_tab_count = this.state.tab_count;
-    
-    let new_data =  this.state.data;
-    new_data[new_tab_count]={
-      id: new_tab_count,
-      code: '//type your code.....'
-    };
-    console.log(new_data);
-
-    new_tab_count += 1;
-    
-    this.setState({tab_count: new_tab_count, data: new_data});
+    this.props.addTab(this.props.tab_count);
+    //this.setState({data:this.props.data,tab_count:this.props.tab_count});
   }
 
   render() {
-
-    let allTabs = Object.keys(this.state.data)
+    let allTabs = Object.keys(this.props.data)
       .map(tabkey => {
         let string_key = tabkey.toString();
         let title_key = "Tab " + string_key
         return (<Tabs.Tab key={tabkey} id={string_key} title = {title_key}>
-                <Editor ids={string_key} onUpdate={this.updateCodeHandler} data={this.state.data} />
+                <Editor ids={string_key} onUpdate={this.updateCodeHandler} data={this.props.data} />
                </Tabs.Tab>)
       });
 
@@ -85,8 +67,21 @@ class App extends React.Component {
   }
 
 }
+const mapStateToProps = (state, ownProps) => {
+  return {
+    // You can now say this.props.books
+    data:state.addTab.data,
+    tab_count:state.addTab.tab_count
+  }
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+  // You can now say this.props.createBook
+    addTab: tabs => dispatch(addTab(tabs))
+  }
+};
 
 //render(<App />, document.getElementById("root"));
 
-export default App;
+export default  connect(mapStateToProps, mapDispatchToProps)(App);
