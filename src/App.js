@@ -46,11 +46,7 @@ class App extends React.Component {
     //console.log([...this.state.data]);
   }
 
-  addTab = () => {
-    this.props.addTab(this.props.tab_count);
-    //this.setState({data:this.props.data,tab_count:this.props.tab_count});
-  }
-
+  
   render() {
     let allTabs = Object.keys(this.props.data)
       .map(tabkey => {

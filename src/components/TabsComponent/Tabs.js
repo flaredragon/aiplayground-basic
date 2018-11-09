@@ -135,13 +135,14 @@ class Tabs extends Component {
     };
 
     onClick = tab => event => {
+        console.log(tab);
         this.setState((prevState, props) => {
             return {
                 prevActiveTab: prevState.activeTab,
                 activeTab: tab
             };
         });
-        this.props.updateTab(this.state.activeTab.id);
+        this.props.updateTab(tab.id);
     };
 
    createTab = () => {
@@ -202,7 +203,7 @@ class Tabs extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
       // You can now say this.props.books
-      tab:state.messageReducer.activeTab
+      tab:state.messageReducer.tabActive
     }
   };
   
