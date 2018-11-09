@@ -15,6 +15,19 @@ const DUMMY_DATA = [
     }
   ]
 
+const styleMsg = {
+  backgroundColor: "#1f1f1f",
+  marginLeft: "40px",
+  marginRight: "40px",
+  marginTop: "150px"
+};
+
+const styleBtn = {
+  backgroundColor: "#1f1f1f",
+  marginLeft: "40px",
+  marginRight: "40px",
+  marginTop: "25px"
+}
 
 class Wrapper extends React.Component{
     
@@ -38,8 +51,12 @@ class Wrapper extends React.Component{
     {
         return(
             <div>
-            <MessageList messages={this.state.messages} />
-            <SendMessageForm sendMessage={this.sendMessage.bind(this)}/>
+              <div style={styleMsg}>
+                <MessageList messages={this.state.messages} />
+              </div>
+              <div style={styleBtn}>
+                <SendMessageForm sendMessage={this.sendMessage.bind(this)}/>
+              </div>
             </div>
         );
     }
