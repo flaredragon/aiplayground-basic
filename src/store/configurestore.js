@@ -1,9 +1,7 @@
-import {createStore} from 'redux';
+import {createStore,applyMiddleware} from 'redux';
 import rootReducer from '../reducers/index';
-import {
-  addTab
-} from '../actions/bookActions';
-const store = createStore(rootReducer, window.STATE_FROM_SERVER);
+import thunk from "redux-thunk";
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 console.log(store.getState());
 const unsubscribe = store.subscribe(() => console.log(store.getState()));
@@ -11,6 +9,6 @@ const unsubscribe = store.subscribe(() => console.log(store.getState()));
 // store.dispatch(addTab('Learn about reducers'))
 // store.dispatch(addTab('Learn about store'))
 // Stop listening to state updates
-//unsubscribe()
+unsubscribe()
 
 export default store;

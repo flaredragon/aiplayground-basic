@@ -1,10 +1,8 @@
 import React from "react";
-import safeEval from 'safe-eval';
+import { connect } from "react-redux";
 import MessageList from './MessageList';
 import SendMessageForm from './SendMessageForm';
-import store from '../../store/configurestore';
-import { addTab } from "../../actions/bookActions";
-import campK12 from "../../class/campk12";
+import { thunk_action_creator } from "../../actions/messageActions";
 const DUMMY_DATA = [
     {
       senderId: "perborgen",
@@ -16,53 +14,54 @@ const DUMMY_DATA = [
     }
   ]
 
-const styleMsg = {
-  backgroundColor: "#1f1f1f",
-  marginLeft: "40px",
-  marginRight: "40px",
-  marginTop: "150px"
-};
-
-const styleBtn = {
-  backgroundColor: "#1f1f1f",
-  marginLeft: "40px",
-  marginRight: "40px",
-  marginTop: "25px"
-}
+  const styleMsg = {
+    backgroundColor: "#1f1f1f",
+    marginLeft: "40px",
+    marginRight: "40px",
+    marginTop: "150px"
+  };
+  
+  const styleBtn = {
+    backgroundColor: "#1f1f1f",
+    marginLeft: "40px",
+    marginRight: "40px",
+    marginTop: "25px"
+  }
+  
 
 class Wrapper extends React.Component{
     
-    constructor() {
-        super()
-        this.state = {
-           messages: DUMMY_DATA
-        }
-        
+    constructor(props) {
+        super(props)
       }
       sendMessage(message){
-        const index = store.getState();
-        var data = this.state.messages;
-        var x = safeEval('('+index.addTab.data[index.messageReducer.tabActive].code+')('+message+')',{add5:campK12.add5,mulRandom:campK12.mulWithRandom});
-        
-        data.push({senderId:"user",text:message});
-        data.push({senderId:"Bot",text:x});
-        //console.log(x);
-        this.setState({messages:data});
-        //console.log(store.getState())
+        this.props.dispatch(thunk_action_creator(message));
       }
     render()
     {
         return(
             <div>
-              <div style={styleMsg}>
-                <MessageList messages={this.state.messages} />
-              </div>
-              <div style={styleBtn}>
-                <SendMessageForm sendMessage={this.sendMessage.bind(this)}/>
-              </div>
+            <div style={styleMsg}>
+            <MessageList messages={this.props.messages} isFetching={this.props.isFetching} />
+            </div>
+            <div style={styleBtn}>
+            <SendMessageForm sendMessage={this.sendMessage.bind(this)}/>
+            </div>
             </div>
         );
     }
 }
 
-export default Wrapper;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    // You can now say this.props.books
+    //data:state.data
+    isFetching:state.asyncReducer.isFetching,
+    messages:state.asyncReducer.messages
+  }
+};
+
+
+
+
+export default connect(mapStateToProps)(Wrapper);

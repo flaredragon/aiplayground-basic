@@ -24,14 +24,6 @@ const stylesEditor = {
   display: "inline-block"
 };
 
-const styleMessage = {
-  float:"right",
-  display:"inline-block",
-  width:"50%",
-  fontFamily: "Quicksand",
-  textAlign: "center"
-};
-
 class App extends React.Component {
 
   constructor(props) {
@@ -46,7 +38,11 @@ class App extends React.Component {
     //console.log([...this.state.data]);
   }
 
-  
+  addTab = () => {
+    //this.props.addTab(this.props.tab_count);
+    //this.setState({data:this.props.data,tab_count:this.props.tab_count});
+  }
+
   render() {
     let allTabs = Object.keys(this.props.data)
       .map(tabkey => {
@@ -70,9 +66,7 @@ class App extends React.Component {
           {allTabs}
           </Tabs>
         </div>
-        <div style={styleMessage} >
-          <Wrapper></Wrapper>
-        </div>
+        <Wrapper></Wrapper>
       </div>
     )
   }

@@ -17,7 +17,10 @@ const styleBox = {
 
 class MessageList extends React.Component {
     render() {
-
+      var fetcher=<div></div>
+      if (this.props.isFetching) {
+         fetcher = <li key="Bot" style={{ listStyle: "none", textAlign: "right" }}><div>.....yeah</div></li>
+      }
         return (
           <ul className="message-list">                 
             {this.props.messages.map(message => {
@@ -29,7 +32,7 @@ class MessageList extends React.Component {
                       <span style={{ textAlign: "left" }}>{message.text}</span>
                     </div>
                     <div style={{ display: "inline-block", color: "#d3d3d3", marginRight: "12px" }}>
-                      <img src="http://tribeappsoft.com/storageImages/news/38.png" width="30px" height="30px" style={{ marginTop: "10px", borderRadius: "15px" }} />
+                      <img alt="" src="http://tribeappsoft.com/storageImages/news/38.png" width="30px" height="30px" style={{ marginTop: "10px", borderRadius: "15px" }} />
                     </div>
                     <br />
                   </li>
@@ -39,7 +42,7 @@ class MessageList extends React.Component {
               return (
                <li key={message.senderId} style={{listStyle:"none", textAlign:"left"}}>
                  <div style={{display:"inline-block", color:"#d3d3d3", marginLeft:"-10px"}}>
-                   <img src="http://news.nd.edu/assets/113411/james_brockmole_300.jpg" width="30px" height="30px" style={{marginTop:"10px", borderRadius:"15px"}}/>
+                   <img alt="" src="http://news.nd.edu/assets/113411/james_brockmole_300.jpg" width="30px" height="30px" style={{marginTop:"10px", borderRadius:"15px"}}/>
                  </div>
                  <div style={styleBox}>
                    <span style={{textAlign:"left"}}>{message.text}</span>
@@ -49,6 +52,7 @@ class MessageList extends React.Component {
              )
             }
            })}
+           {fetcher}
          </ul>
         )
       }

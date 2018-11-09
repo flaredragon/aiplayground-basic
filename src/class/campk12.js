@@ -6,6 +6,23 @@ class CampK12 {
     add5(i){
         return i+5;
     }
+
+    asyncF(){
+        function asyncThing (value) {
+            return new Promise((resolve, reject) => {
+              setTimeout(() => resolve(value), 10000)
+            })
+          }
+          
+          async function main () {
+              var value =3;
+              const v = await asyncThing(value)
+              return v * 2;
+            }
+          main()
+            .then(v => {return v;})
+            .catch(err => console.error(err))   
+    }
   }
   
   var campK12 = new CampK12();
