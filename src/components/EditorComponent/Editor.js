@@ -39,12 +39,11 @@ class Editor extends React.Component {
             selectOnLineNumbers: true,
             overviewRulerBorder: false,
             // overviewRulerLanes: 0,
-            minimap: true
+            minimap: {enabled: false}
             
         };
         return (
             <MonacoEditor
-                
                 width="inherit"
                 height="600"
                 language="javascript"
