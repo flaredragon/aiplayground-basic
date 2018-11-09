@@ -17,9 +17,9 @@ const styles = {
 };
 
 const stylesEditor = {
-  // marginTop: "-10",
+  marginTop: "-10",
   fontFamily: "Quicksand",
-  // marginLeft: "10",
+  marginLeft: "10",
   width: "50%",
   display: "inline-block"
 };

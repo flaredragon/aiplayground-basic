@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 const navbar = () => (
-    <Navbar inverse collapseOnSelect>
+    <Navbar inverse collapseOnSelect style={{marginBottom: "0", borderBottom: "#3e3e3e 2px solid"}}>
         <Navbar.Header>
             <Navbar.Brand>
                 <a href="#">AI Playground</a>

@@ -16,8 +16,9 @@ const TabTitleItem = glamorous.li(
         display: "inline-block",
         paddingRight: 5,
         paddingLeft: 5,
+        backgroundColor: "#171717",
         transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-        padding: "15px 20px",
+        padding: "13px 20px",
         cursor: "pointer",
         opacity: "0.3",
         ":hover": {
@@ -29,7 +30,12 @@ const TabTitleItem = glamorous.li(
             props.isActiveTab && {
                 transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
                 cursor: "default",
-                opacity: 1
+                opacity: 1,
+                backgroundColor: "#1e1e1e",
+                borderTop: "#3e3e3e solid 2px",
+                borderLeft: "#3e3e3e solid 2px",
+                borderRight: "#3e3e3e solid 2px",
+
             }
         );
     }
@@ -38,7 +44,7 @@ const TabTitleItem = glamorous.li(
 const ActiveTabBorder = glamorous.div(
     {
         height: 4,
-        backgroundColor: "#333",
+        backgroundColor: "#1e1e1e",
         position: "absolute",
         bottom: 0,
         transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
@@ -161,9 +167,9 @@ class Tabs extends Component {
 
                     
 
-                    <ActiveTabBorder
+                    {/* <ActiveTabBorder
                         activeTabElement={this.state.tabsElements[this.state.activeTab.id]}
-                    />
+                    /> */}
                 </TabsContainer>
 
                 {React.Children.map(this.props.children, child =>
