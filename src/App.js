@@ -29,7 +29,10 @@ const styleMessage = {
   display: "inline-block",
   width: "50%",
   fontFamily: "Quicksand",
-  textAlign: "center"
+  textAlign: "center",
+  maxHeight:"500px",
+  overflow:'auto',
+  
 };
 
 

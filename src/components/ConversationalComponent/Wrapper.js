@@ -18,7 +18,7 @@ const DUMMY_DATA = [
     backgroundColor: "#1f1f1f",
     marginLeft: "40px",
     marginRight: "40px",
-    marginTop: "150px"
+    marginTop: "50px"
   };
   
   const styleBtn = {
