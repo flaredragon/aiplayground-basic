@@ -13,7 +13,7 @@ class Editor extends React.Component {
                 },
                 {
                     id: 1,
-                    code: '//type your code.....d'
+                    code: '//type your code.....'
                 },
             ],
             
@@ -36,11 +36,14 @@ class Editor extends React.Component {
         // console.log(this.props.data[parseInt(this.props.ids)]);
         const code = this.props.data[parseInt(this.props.ids)].code;
         const options = {
-            selectOnLineNumbers: true
+            selectOnLineNumbers: true,
+            overviewRulerBorder: false,
+            // overviewRulerLanes: 0,
+            
         };
         return (
             <MonacoEditor
-                width="800"
+                width="inherit"
                 height="600"
                 language="javascript"
                 theme="vs-dark"

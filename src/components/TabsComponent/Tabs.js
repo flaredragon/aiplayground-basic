@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import glamorous from "glamorous";
 import {connect} from 'react-redux';
-import {updateTab} from '../../actions/messageActions';
+import { updateTab } from '../../actions/messageActions';
+import { addTab } from '../../actions/bookActions';
 import Tab from "./Tab";
 
 const ListTabs = glamorous.ul({
@@ -16,11 +17,11 @@ const TabTitleItem = glamorous.li(
         paddingRight: 5,
         paddingLeft: 5,
         transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-        padding: "16px 30px",
+        padding: "15px 20px",
         cursor: "pointer",
-        opacity: "0.4",
+        opacity: "0.3",
         ":hover": {
-            opacity: 1
+            opacity: "1"
         }
     },
     props => {
@@ -37,7 +38,7 @@ const TabTitleItem = glamorous.li(
 const ActiveTabBorder = glamorous.div(
     {
         height: 4,
-        backgroundColor: "#0088dd",
+        backgroundColor: "#333",
         position: "absolute",
         bottom: 0,
         transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
@@ -55,13 +56,15 @@ const ActiveTabBorder = glamorous.div(
 
 const TabAnchorItem = glamorous.a({
     textTransform: "capitalize",
-    color: "#000000",
+    color: "#fff",
     fontWeight: 600
 });
 
 const TabsContainer = glamorous.div({
     position: "relative",
-    borderBottom: "1px solid #dfdfdf"
+    display: "inline-block",
+    backgroundColor: "#3e3e3e",
+    borderBottom: "1px solid #000"
 });
 
 const ReactTabs = glamorous.div({
@@ -77,6 +80,8 @@ class Tabs extends Component {
         activeTab: this.props.activeTab,
         tabsElements: []
     };
+
+
 
     addTab = newTab => {
         let isNewTabFound;
@@ -117,6 +122,11 @@ class Tabs extends Component {
         this.props.updateTab(this.state.activeTab.id);
     };
 
+   createTab = () => {
+       console.log(this.props);
+       this.props.addTab(this.props.children.length);
+   }
+
     render() {
         return (
             <ReactTabs>
@@ -144,7 +154,12 @@ class Tabs extends Component {
                                 <TabAnchorItem>{tab.title}</TabAnchorItem>
                             </TabTitleItem>
                         ))}
+                        <TabTitleItem onClick={this.createTab} >
+                            <TabAnchorItem>+</TabAnchorItem>
+                        </TabTitleItem>
                     </ListTabs>
+
+                    
 
                     <ActiveTabBorder
                         activeTabElement={this.state.tabsElements[this.state.activeTab.id]}
@@ -172,7 +187,8 @@ const mapStateToProps = (state, ownProps) => {
   const mapDispatchToProps = (dispatch) => {
     return {
     // You can now say this.props.createBook
-      updateTab: tab => dispatch(updateTab(tab))
+      updateTab: tab => dispatch(updateTab(tab)),
+      addTab: tab => dispatch(addTab(tab))
     }
   };
   
