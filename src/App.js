@@ -24,6 +24,15 @@ const stylesEditor = {
   display: "inline-block"
 };
 
+const styleMessage = {
+  float: "right",
+  display: "inline-block",
+  width: "50%",
+  fontFamily: "Quicksand",
+  textAlign: "center"
+};
+
+
 class App extends React.Component {
 
   constructor(props) {
@@ -66,7 +75,9 @@ class App extends React.Component {
           {allTabs}
           </Tabs>
         </div>
+        <div style={styleMessage}>
         <Wrapper></Wrapper>
+        </div>
       </div>
     )
   }
