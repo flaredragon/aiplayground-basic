@@ -43,8 +43,9 @@ class Wrapper extends React.Component{
         const index = store.getState();
         var data = this.state.messages;
         var x = safeEval('('+index.addTab.data[index.messageReducer.tabActive].code+')('+message+')',{add5:campK12.add5,mulRandom:campK12.mulWithRandom});
+        
         data.push({senderId:"user",text:message});
-        data.push({senderId:"user",text:x});
+        data.push({senderId:"Bot",text:x});
         //console.log(x);
         this.setState({messages:data});
         //console.log(store.getState())
