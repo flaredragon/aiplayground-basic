@@ -30,8 +30,8 @@ const styleMessage = {
   width: "50%",
   fontFamily: "Quicksand",
   textAlign: "center",
-  maxHeight:"500px",
-  overflow:'auto',
+  // maxHeight:"500px",
+  // overflow:'auto',
   
 };
 

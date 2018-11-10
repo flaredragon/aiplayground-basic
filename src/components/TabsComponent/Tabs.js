@@ -57,6 +57,21 @@ const ButtonTabTitle = glamorous.li(
     }
 );
 
+const ApplyChangesItem = glamorous.li(
+    {
+        display: "inline-block",
+        paddingRight: 5,
+        paddingLeft: 5,
+        backgroundColor: "#000",
+        color: "#fff",
+        transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+        padding: "13px 20px",
+        cursor: "pointer",
+        opacity: "1",
+        float: "right"
+    }
+);
+
 const ActiveTabBorder = glamorous.div(
     {
         height: 4,
@@ -180,6 +195,11 @@ class Tabs extends Component {
                         <ButtonTabTitle onClick={this.createTab} >
                             <TabAnchorItem>+</TabAnchorItem>
                         </ButtonTabTitle>
+
+                        <ApplyChangesItem >
+                            <TabAnchorItem>Apply Changes</TabAnchorItem>
+                        </ApplyChangesItem>
+
                     </ListTabs>
 
                     

@@ -40,8 +40,11 @@ export function updateTab(tab){
     return function(dispatch, getState) {
       async function executeAsyncTask () {
         const index = store.getState();
-        var x = await safeEval('('+index.addTab.data[index.messageReducer.tabActive].code+')('+message+')',{add5:campK12.add5,mulRandom:campK12.mulWithRandom,asyncF:campK12.asyncF});
-        console.log(x);
+
+        var argumentToEval = `(${index.addTab.data[index.messageReducer.tabActive].code})("${message}")`;
+        console.log("message: " + message);
+        var x = await safeEval(argumentToEval,{add5:campK12.add5,mulRandom:campK12.mulWithRandom,asyncF:campK12.asyncF, sleep: campK12.sleep});
+        console.log("x: "+x);
         return x;
       }    
       executeAsyncTask()

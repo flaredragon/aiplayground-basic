@@ -18,14 +18,16 @@ const DUMMY_DATA = [
     backgroundColor: "#1f1f1f",
     marginLeft: "40px",
     marginRight: "40px",
-    marginTop: "50px"
+    marginTop: "50px",
+    height: "400px",
+    overflow: "auto",
   };
   
   const styleBtn = {
     backgroundColor: "#1f1f1f",
     marginLeft: "40px",
     marginRight: "40px",
-    marginTop: "25px"
+    marginTop: "25px",
   }
   
 
