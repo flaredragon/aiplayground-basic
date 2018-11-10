@@ -24,7 +24,6 @@ class MessageList extends React.Component {
         return (
           <ul className="message-list">                 
             {this.props.messages.map(message => {
-              console.log(message.senderId)
               if (message.senderId === "Bot"){
                 return (
                   <li key={message.senderId} style={{ listStyle: "none", textAlign: "right" }}>

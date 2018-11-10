@@ -20,11 +20,11 @@ class Editor extends React.Component {
         }
     }
     editorDidMount(editor, monaco) {
-        console.log('editorDidMount', editor);
+        //console.log('editorDidMount', editor);
         //editor.focus();
     }
     onChange(newValue, e) {
-        console.log('onChange', newValue, e);
+        //console.log('onChange', newValue, e);
         let new_data = {...this.props.data};
         new_data[parseInt(this.props.ids)].code = newValue;
         this.props.onUpdate(new_data);
@@ -36,7 +36,7 @@ class Editor extends React.Component {
         // console.log(this.props.data[parseInt(this.props.ids)]);
         const code = this.props.data[parseInt(this.props.ids)].code;
         const options = {
-            selectOnLineNumbers: true,
+            //selectOnLineNumbers: true,
             overviewRulerBorder: false,
             // overviewRulerLanes: 0,
             minimap: {enabled: false}

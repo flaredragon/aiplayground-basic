@@ -161,7 +161,7 @@ class Tabs extends Component {
     };
 
    createTab = () => {
-       console.log(this.props);
+       //console.log(this.props);
        this.props.addTab(this.props.children.length);
    }
 

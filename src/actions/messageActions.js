@@ -42,9 +42,17 @@ export function updateTab(tab){
         const index = store.getState();
 
         var argumentToEval = `(${index.addTab.data[index.messageReducer.tabActive].code})("${message}")`;
-        console.log("message: " + message);
+        //console.log("message: " + message);
+        try {
+          eval(argumentToEval,{add5:campK12.add5,mulRandom:campK12.mulWithRandom,asyncF:campK12.asyncF, sleep: campK12.sleep});
+        } catch (e) {
+          if (e instanceof SyntaxError) {
+              alert(e.message);
+          }
+        }
         var x = await safeEval(argumentToEval,{add5:campK12.add5,mulRandom:campK12.mulWithRandom,asyncF:campK12.asyncF, sleep: campK12.sleep});
         console.log("x: "+x);
+        
         return x;
       }    
       executeAsyncTask()

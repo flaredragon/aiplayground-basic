@@ -45,7 +45,7 @@ class App extends React.Component {
 
   updateCodeHandler = (new_data) => {
     //this.props.updateCode(new_data);
-    console.log(this.props);
+    //console.log(this.props);
     this.setState({ data: new_data });
     //console.log([...this.state.data]);
   }
