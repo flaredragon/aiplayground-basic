@@ -8,16 +8,13 @@ class CampK12 {
         return i+5;
     }
 
-    
     async sleep() {
       await new Promise(resolve => setTimeout(resolve, 3000));;
       return "i am done!";
     }
 
-    asyncF(){
-
-      var p = new Promise
-        function asyncThing (value) {
+    async asyncF(){
+      function asyncThing (value) {
             return new Promise((resolve, reject) => {
               setTimeout(() => resolve(value), 10000)
             })
@@ -33,7 +30,7 @@ class CampK12 {
             .catch(err => console.error(err))   
     }
   }
-  
+
   var campK12 = new CampK12();
 
   export default campK12;
